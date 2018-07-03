@@ -1,0 +1,30 @@
+﻿<dx:ThemedWindow x:Class="DXSample15.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxSample15="clr-namespace:DXSample15"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        d:DataContext="{d:DesignInstance dxSample15:ViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <dx:ThemedWindow.Resources>
+        <Style TargetType="{x:Type dxg:RowControl}">
+            <Setter Property="MaxHeight" Value="21" />
+        </Style>
+        <DataTemplate x:Key="LinkTemplate" DataType="{x:Type dxg:GridCellData}">
+            <dxe:HyperlinkEdit Text="{Binding Value}" />
+        </DataTemplate>
+        <dxSample15:CellTemplateSelector x:Key="CellTemplateSelector"
+                                         LinkTemplate="{StaticResource LinkTemplate}" />
+    </dx:ThemedWindow.Resources>
+    <Grid>
+        <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" ItemsSource="{Binding Items}">
+            <dxg:GridControl.View>
+                <dxg:TableView CellTemplateSelector="{StaticResource CellTemplateSelector}" AllowEditing="False" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</dx:ThemedWindow>
