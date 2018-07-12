@@ -15,7 +15,7 @@
             <Setter Property="MaxHeight" Value="21" />
         </Style>
         <DataTemplate x:Key="LinkTemplate" DataType="{x:Type dxg:GridCellData}">
-            <dxe:HyperlinkEdit Text="{Binding Value}" />
+            <dxe:HyperlinkEdit Name="PART_Editor" />
         </DataTemplate>
         <dxSample15:CellTemplateSelector x:Key="CellTemplateSelector"
                                          LinkTemplate="{StaticResource LinkTemplate}" />
